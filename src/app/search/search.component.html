@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="logo">
+        <span class="logo-text">MediSearch</span>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" 
+               [(ngModel)]="searchQuery" 
+               (input)="onInputChange()" 
+               placeholder="Enter medicine name" 
+               class="form-control" 
+               [class.is-invalid]="error" 
+               (keyup.enter)="searchMedicine()" />
+        <button (click)="searchMedicine()" class="btn" style="background-color: #008080;color:white;" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Search</span>
+            <span *ngIf="isLoading">Searching...</span>
+        </button>
+        
+        <!-- Suggestions Dropdown -->
+        <ul *ngIf="suggestions.length" class="suggestions-dropdown">
+            <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)" class="suggestion-item">
+                {{ suggestion }} <!-- Access name property -->
+            </li>
+        </ul>
+    </div>
+    <div class="custom-suggestion" style="margin-top: 190px;" *ngIf="isHome">
+        <app-medicine-suggestions (suggestionSelected)="onSuggestionSelected($event)"></app-medicine-suggestions>
+    </div>
+    
+
+    <!-- Error Message -->
+    <div *ngIf="error" class="alert alert-danger mt-3">
+        {{ error }}
+    </div>
+
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="text-center mt-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    <div *ngIf="searchResults" class="search-results mt-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="language-chooser" style="margin-top:3px;margin-bottom:5px;">
+                    <div class="btn-group d-flex justify-content-center gap-3" role="group" aria-label="Language selection">
+                        <label class="btn btn-outline-primary" 
+                               [ngClass]="{'active': selectedLanguage === 'english'}"
+                               (click)="selectedLanguage = 'english'">
+                            <input type="radio" name="language" value="english" [(ngModel)]="selectedLanguage" class="d-none" />
+                            English
+                        </label>
+                        <label class="btn btn-outline-primary" 
+                               [ngClass]="{'active': selectedLanguage === 'hindi'}"
+                               (click)="selectedLanguage = 'hindi'">
+                            <input type="radio" name="language" value="hindi" [(ngModel)]="selectedLanguage" class="d-none" />
+                            Hindi
+                        </label>
+                        <label class="btn btn-outline-primary" 
+                               [ngClass]="{'active': selectedLanguage === 'tamil'}"
+                               (click)="selectedLanguage = 'tamil'">
+                            <input type="radio" name="language" value="tamil" [(ngModel)]="selectedLanguage" class="d-none" />
+                            Tamil
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card-header">
+                    <h5 class="card-title">{{ searchResults.brandName }}</h5>
+                    <button class="ai-summarize-button" (click)="summarize()">Summarize with AI</button>
+                </div>
+
+                <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
+                    <span>Generating...</span> 
+                    <span class="loader"></span>
+                </div>
+                <div *ngIf="!isLoading && formattedText">
+                    <p class="d-flex justify-content-center align-items-center" style="font-size: 1.5rem; margin-top:1px;"><b>Summary of Medicine by AI</b></p>
+                </div>
+                <div class="horizontal-line" *ngIf="!isLoading && formattedText">
+                    <hr>
+                </div>
+                <p *ngIf="!isLoading && formattedText" [innerHTML]="formattedText"></p>
+
+                <div class="horizontal-line" *ngIf="!isLoading && formattedText">
+                    <hr>
+                </div>
+
+                <p class="card-text" style="margin-top:20px;"><strong>Generic Name:</strong> {{ searchResults.genericName }}</p>
+                <p class="card-text"><strong>Indications:</strong> {{ searchResults.indications }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Results Message
+    <div *ngIf="!isLoading && !searchResults && searchQuery" class="text-center mt-4">
+        No results found for "{{ searchQuery }}"
+    </div> -->
+</div>

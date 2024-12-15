@@ -1,0 +1,49 @@
+.suggestions-container {
+    width: 100%; /* Ensures the container takes full width */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.suggestion-card {
+    flex: 1 1 20%;
+    max-width: 100%; /* Match card to full width of container */
+    min-width: 120px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    padding: 5px; /* Reduced padding for a compact look */
+    font-size: 0.9rem; /* Smaller font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor:pointer;
+}
+
+.suggestion-card .card-body {
+    padding: 10px; /* Smaller inner padding */
+}
+
+.suggestion-card .card-title {
+    font-size: 0.9rem; /* Smaller font size for card title */
+    font-weight: 500; /* Lighten font weight for a clean look */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:blue;
+}
+
+.suggestion-card:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .suggestion-card {
+        flex: 1 1 40%;
+    }
+}
+
+@media (max-width: 576px) {
+    .suggestion-card {
+        flex: 1 1 80%;
+    }
+}
+

@@ -1,0 +1,138 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-text {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FF6F61; 
+  border-bottom: 3px solid white;
+}
+
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative; 
+}
+
+.form-control {
+  flex: 1;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.alert {
+  border-radius: 8px;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-title {
+  flex: 1; /* Takes up available space */
+  margin: 0; /* Remove extra spacing */
+  word-break: break-word; /* Allows long words to break onto a new line */
+}
+
+/* Styles for the AI Summarize Button */
+.ai-summarize-button {
+  white-space: nowrap; 
+  margin-left: 10px;  
+  background: linear-gradient(90deg, #d807ab, #0752f3); 
+  color: white;                   
+  border: none;                   
+  padding: 10px 20px;
+  border-radius: 5px;             
+  cursor: pointer;                
+  font-size: 16px;                
+  transition: background 0.3s ease;
+}
+
+/* Styles for the Language Chooser Buttons */
+.language-chooser .btn {
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+.language-chooser .btn:hover,
+.language-chooser .btn:focus,
+.language-chooser .btn.active,
+.language-chooser .btn:active {
+  background: linear-gradient(90deg, #d807ab, #0752f3) !important;
+  color: white !important; /* Ensures text color is consistent */
+  border-color: transparent !important; /* Removes Bootstrap border if needed */
+}
+
+/* Styles for the Summarize Button Hover Effect */
+.ai-summarize-button:hover {
+  background: linear-gradient(45deg, #0752f3, #d807ab); 
+}
+
+.horizontal-line hr {
+  border: none;
+  height: 4px; /* Set thickness */
+  background-color: #ff0000; /* Red color */
+  margin: 20px 0;
+}
+
+/* Styles for Suggestions Dropdown */
+.suggestions-dropdown {
+  position: absolute; /* Position it absolutely to the search bar */
+  top: calc(100% + 5px); /* Position it right below the input bar with a small gap */
+  left: 0; /* Align it with the left edge of the input */
+  width: 88%; /* Make it take the full width of the input bar */
+  max-width: calc(100% - 20px); /* Adjust if you have padding */
+  background-color: white; /* Background color */
+  border: 1px solid #ccc; /* Border for visibility */
+  z-index: 1000; /* Ensure it appears above other elements */
+  max-height: 200px; /* Optional: Set a max height */
+  overflow-y: auto; /* Add scroll if the content exceeds the max height */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for visibility */
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  color: black; /* Text color */
+}
+
+.suggestions-dropdown li {
+  padding: 10px; /* Adjust padding as needed */
+  cursor: pointer; /* Change cursor to pointer for better UX */
+}
+
+.suggestions-dropdown li:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.suggestions-dropdown.visible {
+  display: block; /* Show when suggestions are present */
+}
+.custom-suggestion{
+  margin-top:40px;
+}

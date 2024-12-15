@@ -1,0 +1,11 @@
+<div class="text-center"> <!-- Centering the heading -->
+  <p style="font-size:1.5rem;"><span style="border-bottom:2px solid white;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Some Widely Used Medicines</span></p>
+</div>
+
+<div class="suggestions-container d-flex flex-wrap justify-content-center gap-3 mt-4" style="margin-top: 40px;">
+  <div *ngFor="let suggestion of medicines.slice(0, 8)" class="suggestion-card card" (click)="selectSuggestion(suggestion)">
+      <div class="card-body text-center">
+          <p class="card-title"><b>{{ suggestion }}</b></p>
+      </div>
+  </div>
+</div>
